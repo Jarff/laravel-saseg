@@ -46,7 +46,7 @@ Uses package auto discovery feature, no need to edit the `config/app.php` file.
 3. Publish the packages views, config file, assets, and language files by running the following from your projects root folder:
 
 ```bash
-    php artisan vendor:publish --tag=litecms
+    php artisan vendor:publish --tag=laravelsaseg
 ```
 
 ## Routes

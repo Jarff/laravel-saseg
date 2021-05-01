@@ -1,11 +1,11 @@
 <?php
 
-namespace Saseg\LiteCMS\Providers;
+namespace Saseg\LaravelSaseg\Providers;
 
 use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 
-class LiteCMSServiceProvider extends ServiceProvider
+class LaravelSasegServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -42,21 +42,21 @@ class LiteCMSServiceProvider extends ServiceProvider
         //Publish the assets
         $this->publishes([
             __DIR__.'/../assets' => base_path('public/panel/assets'),
-        ], 'litecms');
+        ], 'laravelsaseg');
 
         //Default Views
         $this->publishes([
             __DIR__.'/../Views' => base_path('resources/views/vendor/panel'),
-        ], 'litecms');
+        ], 'laravelsaseg');
 
         //Scripts (needs webpack)
         $this->publishes([
             __DIR__.'/../resources' => base_path('resources/js/vendor/panel'),
-        ], 'litecms');
+        ], 'laravelsaseg');
 
         //Updates middleware
         $this->publishes([
             __DIR__.'/../Middleware/Authenticate.php' => base_path('app/Http/Middleware'),
-        ], 'litecms');
+        ], 'laravelsaseg');
     }
 }

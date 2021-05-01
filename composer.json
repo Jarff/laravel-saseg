@@ -19,5 +19,12 @@
         "psr-4": {
             "Saseg\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Saseg\\LaravelSaseg\\Providers\\LaravelSasegServiceProvider"
+            ]
+        }
     }
 }
