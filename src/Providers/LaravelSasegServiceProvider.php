@@ -1,6 +1,6 @@
 <?php
 
-namespace Saseg\LaravelSaseg\Providers;
+namespace Saseg\Providers;
 
 use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
