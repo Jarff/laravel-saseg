@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Saseg\Providers\PermissionKey;
 
 class PermissionSeeder extends Seeder
 {

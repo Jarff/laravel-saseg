@@ -54,6 +54,11 @@ class LaravelSasegServiceProvider extends ServiceProvider
             __DIR__.'/../resources' => base_path('resources/js/vendor/panel'),
         ], 'laravelsaseg');
 
+        //Publish seeders
+        $this->publishes([
+            __DIR__.'/../Database/Seeds' => base_path('database/seeds'),
+        ], 'laravelsaseg');
+
         //Updates middleware
         $this->publishes([
             __DIR__.'/../Middleware/Authenticate.php' => base_path('app/Http/Middleware'),
