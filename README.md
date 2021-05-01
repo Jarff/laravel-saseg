@@ -35,7 +35,7 @@ The current features are :
 1. From your projects root folder in terminal run:
 
 ```bash
-    composer require rodsaseg/saseg
+    composer require rodsaseg/laravel-saseg
 ```
 
 2. Register the package
