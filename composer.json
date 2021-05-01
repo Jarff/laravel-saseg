@@ -23,7 +23,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Saseg\\Providers\\LaravelSasegServiceProvider"
+                "Saseg\\Providers\\SasegServiceProvider"
             ]
         }
     }

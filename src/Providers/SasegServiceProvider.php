@@ -5,7 +5,7 @@ namespace Saseg\Providers;
 use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 
-class LaravelSasegServiceProvider extends ServiceProvider
+class SasegServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
