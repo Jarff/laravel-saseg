@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Rodsaseg\LaravelSaseg\PermissionKey;
+use Rodsaseg\LaravelSaseg\Providers\PermissionKey;
 
 class PermissionSeeder extends Seeder
 {

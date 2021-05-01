@@ -1,7 +1,7 @@
 {
     "name": "rodsaseg/laravel-saseg",
     "description": "Laravel CMS helper installer",
-    "type": "metapackage",
+    "type": "package",
     "license": "MIT",
     "authors": [
         {
@@ -27,5 +27,9 @@
                 "Rodsaseg\\LaravelSaseg\\LaravelSasegServiceProvider"
             ]
         }
-    }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
 }
