@@ -17,13 +17,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Saseg\\": "src/"
+            "Rodsaseg\\LaravelSaseg\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Saseg\\Providers\\SasegServiceProvider"
+                "Rodsaseg\\LaravelSaseg\\Providers\\LaravelSasegServiceProvider"
             ]
         }
     }

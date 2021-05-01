@@ -9,7 +9,7 @@ use App\CustomField;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Providers\PermissionKey;
+use Rodsaseg\LaravelSaseg\Providers\PermissionKey;
 use App\DataTables\UsersDataTable;
 
 class UserController extends Controller

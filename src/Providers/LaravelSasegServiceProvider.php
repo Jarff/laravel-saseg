@@ -1,11 +1,11 @@
 <?php
 
-namespace Saseg\Providers;
+namespace Rodsaseg\LaravelSaseg\Providers;
 
 use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 
-class SasegServiceProvider extends ServiceProvider
+class LaravelSasegServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
