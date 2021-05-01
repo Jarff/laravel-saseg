@@ -2,7 +2,7 @@
 
 namespace Rodsaseg\LaravelSaseg\Providers;
 
-use Illuminate\Routing\Route;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelSasegServiceProvider extends ServiceProvider
