@@ -79,6 +79,20 @@ Uses package auto discovery feature, no need to edit the `config/app.php` file.
 	php artisan migrate
 ```
 
+## Middleware
+
+Update the redirect function inside Middleware/Authenticate.php with:
+
+	if (! $request->expectsJson()) {
+		if(preg_match("/\bpanel\b/", $request->route()->getName())){
+			return route('panel.unauthenticated');
+		}else{
+			session()->flash('login', true);
+			return route('/');
+		}
+	}
+
+
 ## Routes
 
 * `/install`

@@ -5,8 +5,8 @@ Route::get('/storage/list', 'ImageController@show')->name('images.show');
 
 Route::prefix('admin')->group(function(){
     Route::post('/logout', 'UserController@logout')->name('panel.admins.logout');
-    Route::get('/login', "UserController@unauthenticated")->name('panel.unauthenticated');
-    Route::post('/login', "UserController@login")->name('panel.admins.login');
+    Route::get('/login', "UserController@unauthenticated")->name('panel.unauthenticated')->middleware(['web']);
+    Route::post('/login', "UserController@login")->name('panel.admins.login')->middleware(['web']);
     Route::middleware('auth')->group(function(){
         Route::get('/', function(){
             if(auth()->user()->hasRole('client')){

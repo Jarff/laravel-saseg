@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Rodsaseg\LaravelSaseg\Providers\PermissionKey;
 use App\DataTables\UsersDataTable;
+use Illuminate\Routing\Controller;
 
 class UserController extends Controller
 {
     use AuthenticatesUsers;
-    use AuthenticatesUsers {
-        logout as doLogout;
-    }
+    // use AuthenticatesUsers {
+    //     logout as doLogout;
+    // }
     protected $redirectTo = '/cuentas';
     protected $redirectAfterLogout = '/admin';
 
