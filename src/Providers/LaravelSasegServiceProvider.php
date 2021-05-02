@@ -49,6 +49,17 @@ class LaravelSasegServiceProvider extends ServiceProvider
             __DIR__.'/../Views' => base_path('resources/views/vendor/panel'),
         ], 'laravelsaseg');
 
+        //Default Controllers
+        $this->publishes([
+            __DIR__.'/../Controllers' => base_path('app/Http/Controllers'),
+        ], 'laravelsaseg');
+
+
+        //Default DataTables
+        $this->publishes([
+            __DIR__.'/../DataTables' => base_path('app/DataTables'),
+        ], 'laravelsaseg');
+
         //Scripts (needs webpack)
         $this->publishes([
             __DIR__.'/../resources' => base_path('resources/js/vendor/panel'),
@@ -57,11 +68,6 @@ class LaravelSasegServiceProvider extends ServiceProvider
         //Publish seeders
         $this->publishes([
             __DIR__.'/../Database/Seeds' => base_path('database/seeds'),
-        ], 'laravelsaseg');
-
-        //Updates middleware
-        $this->publishes([
-            __DIR__.'/../Middleware/Authenticate.php' => base_path('app/Http/Middleware'),
         ], 'laravelsaseg');
     }
 }
