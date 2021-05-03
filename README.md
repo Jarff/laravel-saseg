@@ -1,8 +1,8 @@
 # Laravel Web Installer | A Web Installer [Package](https://packagist.org/packages/rodsaseg/saseg)
 
-[![Total Downloads](https://poser.pugx.org/rodsaseg/saseg/d/total.svg)](https://packagist.org/packages/rodsaseg/saseg)
-[![Latest Stable Version](https://poser.pugx.org/rodsaseg/saseg/v/stable.svg)](https://packagist.org/packages/rodsaseg/saseg)
-[![License](https://poser.pugx.org/rodsaseg/saseg/license.svg)](https://packagist.org/packages/rodsaseg/saseg)
+[![Total Downloads](https://poser.pugx.org/rodsaseg/laravel-saseg/downloads)](//packagist.org/packages/rodsaseg/laravel-saseg)
+[![Latest Stable Version](https://poser.pugx.org/rodsaseg/laravel-saseg/v)](//packagist.org/packages/rodsaseg/laravel-saseg)
+[![License](https://poser.pugx.org/rodsaseg/laravel-saseg/license)](//packagist.org/packages/rodsaseg/laravel-saseg)
 
 - [About](#about)
 - [Requirements](#requirements)
@@ -147,6 +147,8 @@ Add the next routes to your web.php file
 			});
 		});
 	});
+
+Additional these routes would be available for proper installation or update
 
 * `/install`
 * `/update`
