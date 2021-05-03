@@ -92,6 +92,8 @@ Update the redirect function inside Middleware/Authenticate.php with:
 		}
 	}
 
+## Preparing Your Models
+
 The `HasRoles` trait must be added to the User model to enable this package's features.
 
 Thus, a typical basic User model would have these basic minimum requirements:
@@ -105,6 +107,21 @@ Thus, a typical basic User model would have these basic minimum requirements:
 
 		// ...
 	}
+
+To associate media with a model, the model must implement the following interface and trait:
+
+	namespace App\Models;
+
+	use Illuminate\Database\Eloquent\Model;
+	use Spatie\MediaLibrary\HasMedia\HasMedia;
+	use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
+	class News extends Model implements HasMedia
+	{
+		use HasMediaTrait;
+		...
+	}
+
 
 ## Routes
 
