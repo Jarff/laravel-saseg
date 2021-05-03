@@ -7,6 +7,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Rodsaseg\LaravelSaseg\Providers\PermissionKey;
 use App\DataTables\RolesDataTable;
+use Illuminate\Routing\Controller;
 
 class RoleController extends Controller
 {

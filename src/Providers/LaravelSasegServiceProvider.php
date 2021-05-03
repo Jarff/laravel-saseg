@@ -22,7 +22,7 @@ class LaravelSasegServiceProvider extends ServiceProvider
     public function register()
     {
         $this->publishFiles();
-        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
+        // $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
     }
 
     public function boot(Router $router)
@@ -68,6 +68,16 @@ class LaravelSasegServiceProvider extends ServiceProvider
         //Publish seeders
         $this->publishes([
             __DIR__.'/../Database/Seeds' => base_path('database/seeds'),
+        ], 'laravelsaseg');
+
+        //Publish migrations
+        $this->publishes([
+            __DIR__.'/../Database/Migrations' => base_path('database/migrations'),
+        ], 'laravelsaseg');
+
+        //Publis Permission Key
+        $this->publishes([
+            __DIR__.'/../Providers/Publish' => base_path('app/Providers'),
         ], 'laravelsaseg');
     }
 }

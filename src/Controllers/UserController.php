@@ -16,9 +16,9 @@ use Illuminate\Routing\Controller;
 class UserController extends Controller
 {
     use AuthenticatesUsers;
-    // use AuthenticatesUsers {
-    //     logout as doLogout;
-    // }
+    use AuthenticatesUsers {
+        logout as doLogout;
+    }
     protected $redirectTo = '/cuentas';
     protected $redirectAfterLogout = '/admin';
 

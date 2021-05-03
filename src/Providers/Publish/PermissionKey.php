@@ -1,6 +1,6 @@
 <?php
 
-namespace Rodsaseg\LaravelSaseg\Providers;
+namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 /**
