@@ -108,6 +108,7 @@ Thus, a typical basic User model would have these basic minimum requirements:
 		// ...
 	}
 
+
 To associate media with a model, the model must implement the following interface and trait:
 
 	namespace App\Models;
