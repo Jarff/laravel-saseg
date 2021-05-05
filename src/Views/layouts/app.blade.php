@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="{{asset('panel/assets/nucleo/css/nucleo.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('panel/assets/@fortawesome/fontawesome-free/css/all.min.css')}}" type="text/css">
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="{{asset('panel/assets/nucleto/css/main.css?v=1.0.0')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('panel/assets/nucleo/css/main.css?v=1.0.0')}}" type="text/css">
 </head>
 
 <body>
-    @include('includes.panel.sidebar')
+    @include('vendor.panel.includes.sidebar')
     <!-- Main content -->
     <div class="main-content" id="panel">
         @include('vendor.panel.includes.navbar')
@@ -41,7 +41,7 @@
         ]) !!};
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-    <script src="{{asset('panel/js/main.js?v=1.0.0')}}"></script>
+    <script src="{{asset('panel/assets/js/main.js?v=1.0.0')}}"></script>
     @stack('js')
 </body>
 

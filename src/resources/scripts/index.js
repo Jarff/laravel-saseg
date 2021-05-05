@@ -1,4 +1,4 @@
-require('../../bootstrap');
+require('../../../bootstrap');
 require('./argon');
 
 require('datatables.net-buttons-bs4');

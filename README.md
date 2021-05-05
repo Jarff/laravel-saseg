@@ -65,6 +65,11 @@ Uses package auto discovery feature, no need to edit the `config/app.php` file.
     php artisan vendor:publish --tag=datatables
 ```
 
+```bash
+	#Laravel Installer
+    php artisan vendor:publish --tag=laravelinstaller
+```
+
 4. Clear your config cache. This package requires access to the permission config. Generally it's bad practice to do config-caching in a development environment. If you've been caching configurations locally, clear your config cache with either of these commands:
 
 ```bash
@@ -78,6 +83,45 @@ Uses package auto discovery feature, no need to edit the `config/app.php` file.
 ```bash
 	php artisan migrate
 ```
+
+```bash
+	composer dump-autoload
+```
+
+6. Run the seeders
+
+Update `run()` function in DatabaseSeeder.php, add the next lines:
+
+	public function run()
+    {
+        $this->call(UsersTableSeeder::class);
+        $this->call(PermissionSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(ModelHasRolesTableSeeder::class);
+    }
+
+```bash
+	php artisan db:seed
+```
+
+7. Dependencies npm
+
+Add these dependencies to your project
+
+	"dependencies": {
+        "bootstrap-datepicker": "^1.9.0",
+        "datatables.net": "^1.10.23",
+        "datatables.net-bs4": "^1.10.23",
+        "datatables.net-buttons": "^1.6.5",
+        "datatables.net-buttons-bs4": "^1.6.5",
+        "dropzone": "^5.7.0",
+        "jquery-scroll-lock": "^3.1.3",
+        "jquery.scrollbar": "^0.2.11",
+        "js-cookie": "^2.2.1",
+        "sortablejs": "^1.13.0",
+        "sweetalert2": "^10.14.0",
+        "trumbowyg": "^2.23.0"
+    }
 
 ## Middleware
 

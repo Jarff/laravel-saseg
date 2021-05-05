@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Rodsaseg\LaravelSaseg\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Rodsaseg\LaravelSaseg\Providers\PermissionKey;
+use App\Providers\PermissionKey;
 use App\DataTables\RolesDataTable;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
@@ -35,7 +35,7 @@ class RoleController extends Controller
             ]
         ];
         $info['data'] = Role::all();
-        return $dataTable->render('panel.roles.index', $info);
+        return $dataTable->render('vendor.panel.roles.index', $info);
     }
 
     /**
@@ -59,7 +59,7 @@ class RoleController extends Controller
                 ]
             ],
         ];
-        return view('panel.roles.create', $info);
+        return view('vendor.panel.roles.create', $info);
     }
 
     /**
@@ -122,7 +122,7 @@ class RoleController extends Controller
             ],
         ];   
         $info['role'] = Role::find($id);
-        return view('panel.roles.edit', $info);
+        return view('vendor.panel.roles.edit', $info);
     }
 
     /**

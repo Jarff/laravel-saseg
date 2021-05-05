@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Rodsaseg\LaravelSaseg\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -9,9 +9,9 @@ use App\CustomField;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Rodsaseg\LaravelSaseg\Providers\PermissionKey;
+use App\Providers\PermissionKey;
 use App\DataTables\UsersDataTable;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -46,7 +46,7 @@ class UserController extends Controller
             ]
         ];
         $info['data'] = User::all()->sortByDesc('id');
-        return $dataTable->render('panel.admin.index', $info);
+        return $dataTable->render('vendor.panel.admin.index', $info);
     }
 
     /**
@@ -113,7 +113,7 @@ class UserController extends Controller
             unset($info['breadcrumb'][0]['route']);
         $info['admin'] = User::find($id);
         $info['roles'] = Role::all();
-        return view('panel.admin.edit', $info);
+        return view('vendor.panel.admin.edit', $info);
     }
 
     /**
@@ -170,7 +170,7 @@ class UserController extends Controller
             ],
         ];
         $info['user'] = User::find($id);
-        return view('panel.admin.editPassword', $info);
+        return view('vendor.panel.admin.editPassword', $info);
     }
 
     public function updatePassword(Request $request, $id){
@@ -198,7 +198,7 @@ class UserController extends Controller
     }
 
     public function unauthenticated(){
-        return view('panel.admin.login');
+        return view('vendor.panel.admin.login');
     }
 
     public function login(Request $request){
