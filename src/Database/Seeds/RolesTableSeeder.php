@@ -14,16 +14,17 @@ class RolesTableSeeder extends Seeder
     {
         DB::table('roles')->insert([
             'name' => 'admin',
-            'guard_name' => 'web',
+            'guard_name' => 'admin',
             'default' => 0,
             'deletable' => 0
         ]);
 
-        DB::table('roles')->insert([
-            'name' => 'client',
-            'guard_name' => 'web',
-            'default' => 1,
-            'deletable' => 1
-        ]);
+        //Needs verification for population permissions, should be diferent
+        // DB::table('roles')->insert([
+        //     'name' => 'client',
+        //     'guard_name' => 'web',
+        //     'default' => 1,
+        //     'deletable' => 1
+        // ]);
     }
 }

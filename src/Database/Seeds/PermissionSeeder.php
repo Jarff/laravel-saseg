@@ -21,7 +21,7 @@ class PermissionSeeder extends Seeder
                 if(!DB::table('permissions')->where('name', $permiso['name'])->first()){
                     DB::table('permissions')->insert([
                             'name' => $permiso['name'],
-                            'guard_name' => 'web',
+                            'guard_name' => 'admin',
                             'created_at' => date('Y-m-d H:i:s'),
                             'updated_at' => date('Y-m-d H:i:s')
                     ]);

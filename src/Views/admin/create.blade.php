@@ -84,5 +84,5 @@
 			</div>
         </div>
     </div>
-    @include('includes.panel.media')
+    @include('vendor.panel.includes.media')
 @endsection

@@ -98,7 +98,7 @@ Uses package auto discovery feature, no need to edit the `config/app.php` file.
 
 6. Run the seeders
 
-Update `run()` function in DatabaseSeeder.php. Add the next lines:
+Update `run()` function in `DatabaseSeeder.php`. Add the next lines:
 
 	public function run()
     {
@@ -152,16 +152,19 @@ Update the redirect function inside Middleware/Authenticate.php with:
 
 ## Preparing Your Models
 
-The `HasRoles` trait must be added to the User model to enable this package's features.
+The `HasRoles` and `HasMediaTrait` trait must be added to the User model to enable this package's features.
 
 Thus, a typical basic User model would have these basic minimum requirements:
 
 	use Illuminate\Foundation\Auth\User as Authenticatable;
 	use Spatie\Permission\Traits\HasRoles;
+	use Spatie\MediaLibrary\HasMedia\HasMedia;
+	use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 	class User extends Authenticatable
 	{
 		use HasRoles;
+		use HasMediaTrait;
 
 		// ...
 	}

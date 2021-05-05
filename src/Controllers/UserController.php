@@ -54,9 +54,26 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $info = [
+            'title' => 'Administradores',
+            'breadcrumb' => [
+                [
+                    'title' => 'Todos',
+                    'route' => 'panel.admins.index'
+                ],
+                [
+                    'title' => 'Nuevo',
+                    'route' => 'panel.admins.create',
+                    'active' => true
+                ]
+            ]
+        ];
+        if(!$request->user()->can(PermissionKey::Admin['permissions']['index']['name']))
+            unset($info['breadcrumb'][0]['route']);
+        $info['roles'] = Role::all();
+        return view('vendor.panel.admin.create', $info);
     }
 
     /**
@@ -67,8 +84,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'unique:users,email,'.$request->email
+        ]);
 
-
+        $input = $request->input();
+        $input['password'] = Hash::make($request->password);
+        $user = User::create($input);
+        $user->assignRole($input['role']);
+        if($request->avatar){
+            $user->addMedia($request->avatar)
+                    ->preservingOriginal()
+                    ->toMediaCollection('users');
+        }
+        return redirect()->route('panel.admins.edit', ['id' => $user->id]);
     }
 
     public function register(Request $request){
