@@ -106,10 +106,15 @@ Update `run()` function in `DatabaseSeeder.php`. Add the next lines:
         $this->call(PermissionSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(ModelHasRolesTableSeeder::class);
+		$this->call(RoleHasPermissionsTableSeeder::class);
     }
 
 ```bash
 	php artisan db:seed
+```
+
+```bash
+	php artisan cache:forget spatie.permission.cache
 ```
 
 7. Dependencies npm
@@ -161,7 +166,7 @@ Thus, a typical basic User model would have these basic minimum requirements:
 	use Spatie\MediaLibrary\HasMedia\HasMedia;
 	use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-	class User extends Authenticatable
+	class User extends Authenticatable implements HasMedia
 	{
 		use HasRoles;
 		use HasMediaTrait;

@@ -30,9 +30,14 @@ class RolesDataTable extends DataTable
                 '<span class="badge badge-pill badge-lg badge-warning">No</span>';
             })
             ->addColumn('Acciones', function($row){
+                if($row->deletable){
+                    $dlt = '<a onclick="swalAction(this)" href="#!" class="btn btn-sm btn-link text-danger" data-title="¿Esta seguro?" data-text="Este registro se eliminará" data-swal-icon="question" data-axios-method="delete" data-route="'.route('panel.roles.destroy', ['id' => $row->id]).'" data-action="location.reload()"><i class="fas fa-trash-alt"></i> Eliminar</a>';
+                }else{
+                    $dlt = '';
+                }
                 $btn = '
                     <a href="'.route('panel.roles.edit', ['id' => $row->id]).'" class="btn btn-sm btn-link text-success"><i class="fas fa-edit"></i></i>Editar</a>
-                    <a onclick="swalAction(this)" href="#!" class="btn btn-sm btn-link text-danger" data-title="¿Esta seguro?" data-text="Este registro se eliminará" data-swal-icon="question" data-axios-method="delete" data-route="'.route('panel.roles.destroy', ['id' => $row->id]).'" data-action="location.reload()"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                    '.$dlt.'
                 ';
                 return $btn;
             })
