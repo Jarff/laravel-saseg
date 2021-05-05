@@ -7,6 +7,8 @@
 - [About](#about)
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Middleware](#middleware)
+- [PermissionKey](#permissionKey)
 - [Routes](#routes)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -70,6 +72,12 @@ Uses package auto discovery feature, no need to edit the `config/app.php` file.
     php artisan vendor:publish --tag=laravelinstaller
 ```
 
+```bash
+	#Laravel Migrations Laravel Saseg
+    php artisan vendor:publish --provider="Rodsaseg\LaravelSaseg\Providers\LaravelSasegServiceProvider" --tag="migrations"
+```
+
+
 4. Clear your config cache. This package requires access to the permission config. Generally it's bad practice to do config-caching in a development environment. If you've been caching configurations locally, clear your config cache with either of these commands:
 
 ```bash
@@ -90,7 +98,7 @@ Uses package auto discovery feature, no need to edit the `config/app.php` file.
 
 6. Run the seeders
 
-Update `run()` function in DatabaseSeeder.php, add the next lines:
+Update `run()` function in DatabaseSeeder.php. Add the next lines:
 
 	public function run()
     {
@@ -122,6 +130,12 @@ Add these dependencies to your project
         "sweetalert2": "^10.14.0",
         "trumbowyg": "^2.23.0"
     }
+
+add this line to your `webpack.mix.js`:
+
+```bash
+	mix.js('resources/js/vendor/panel/scripts/index.js', 'public/panel/assets/js/main.js');
+```
 
 ## Middleware
 
@@ -167,50 +181,20 @@ To associate media with a model, the model must implement the following interfac
 		...
 	}
 
+## PermissionKey
+
+Add the next alias inside `config/app.php`:
+
+	'aliases' => [
+		...
+        'PermissionKey' => App\Providers\PermissionKey::class
+    ]
+
+Here, you can define your models and the corresponding permissions.
 
 ## Routes
 
-Add the next routes to your web.php file
-
-	Route::post('/store/image', 'ImageController@store')->name('images.store');
-	Route::get('/storage/list', 'ImageController@show')->name('images.show');
-
-	Route::prefix('admin')->group(function(){
-		Route::post('/logout', 'UserController@logout')->name('panel.admins.logout');
-		Route::get('/login', "UserController@unauthenticated")->name('panel.unauthenticated')->middleware(['web']);
-		Route::post('/login', "UserController@login")->name('panel.admins.login')->middleware(['web']);
-		Route::middleware('auth')->group(function(){
-			Route::get('/', function(){
-				if(auth()->user()->hasRole('client')){
-					return redirect()->route('/');
-				}else{
-					return redirect()->route('panel.admins.edit', ['id' => auth()->user()->id]);
-				}
-			})->name('panel.initial');
-			Route::prefix('/cuentas')->group(function(){
-				Route::prefix('/usuarios')->group(function(){
-					Route::get('/', 'UserController@index')->name('panel.admins.index'); 
-					Route::get('/nuevo', 'UserController@create')->name('panel.admins.create');
-					Route::post('/store', 'UserController@store')->name('panel.admins.store');
-					Route::get('/editar/{id}', 'UserController@edit')->name('panel.admins.edit');
-					Route::put('/update/{id}', 'UserController@update')->name('panel.admins.update');
-					Route::get('/password/editar/{id}', 'UserController@editPassword')->name('panel.admins.edit.password');
-					Route::put('/password/update/{id}', 'UserController@updatePassword')->name('panel.admins.update.password');
-					Route::delete('/destroy/{id}', 'UserController@destroy')->name('panel.admins.destroy');
-				});
-				Route::prefix('/roles')->group(function(){
-					Route::get('/', 'RoleController@index')->name('panel.roles.index');
-					Route::get('/nuevo', 'RoleController@create')->name('panel.roles.create');
-					Route::get('/editar/{id}', 'RoleController@edit')->name('panel.roles.edit');
-					Route::post('/store', 'RoleController@store')->name('panel.roles.store');
-					Route::put('/update/{id}', 'RoleController@update')->name('panel.roles.update');
-					Route::delete('/destroy/{id}', 'RoleController@destroy')->name('panel.roles.destroy');
-				});
-			});
-		});
-	});
-
-Additional these routes would be available for proper installation or update
+These routes would be available for proper installation or update
 
 * `/install`
 * `/update`

@@ -4,10 +4,10 @@ Route::post('/store/image', 'Rodsaseg\LaravelSaseg\Controllers\ImageController@s
 Route::get('/storage/list', 'Rodsaseg\LaravelSaseg\Controllers\ImageController@show')->name('images.show');
 
 Route::prefix('admin')->group(function(){
-    Route::post('/logout', 'Rodsaseg\LaravelSaseg\Controllers\UserController@logout')->name('panel.admins.logout');
+    Route::post('/logout', 'Rodsaseg\LaravelSaseg\Controllers\UserController@logout')->name('panel.admins.logout')->middleware(['web', 'auth']);
     Route::get('/login', "Rodsaseg\LaravelSaseg\Controllers\UserController@unauthenticated")->name('panel.unauthenticated')->middleware(['web']);
     Route::post('/login', "Rodsaseg\LaravelSaseg\Controllers\UserController@login")->name('panel.admins.login')->middleware(['web']);
-    Route::middleware('auth')->group(function(){
+    Route::middleware('web', 'auth')->group(function(){
         Route::get('/', function(){
             if(auth()->user()->hasRole('client')){
                 return redirect()->route('/');

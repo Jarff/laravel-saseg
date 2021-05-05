@@ -2,8 +2,10 @@
 
 namespace Rodsaseg\LaravelSaseg\Providers;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Collection;
 
 class LaravelSasegServiceProvider extends ServiceProvider
 {
@@ -25,11 +27,11 @@ class LaravelSasegServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
     }
 
-    public function boot(Router $router)
+    public function boot(Filesystem $filesystem)
     {
-        //TODO: Verify installation
-        // $router->middlewareGroup('install', [CanInstall::class]);
-        // $router->middlewareGroup('update', [CanUpdate::class]);
+        $this->publishes([
+            __DIR__.'/../Database/Migrations/update_roles_table_add_deletable.php.stub' => $this->getMigrationFileName($filesystem),
+        ], 'migrations');
     }
 
     /**
@@ -49,11 +51,6 @@ class LaravelSasegServiceProvider extends ServiceProvider
             __DIR__.'/../Views' => base_path('resources/views/vendor/panel'),
         ], 'laravelsaseg');
 
-        //Default Controllers
-        $this->publishes([
-            __DIR__.'/../Controllers' => base_path('app/Http/Controllers'),
-        ], 'laravelsaseg');
-
 
         //Default DataTables
         $this->publishes([
@@ -70,18 +67,26 @@ class LaravelSasegServiceProvider extends ServiceProvider
             __DIR__.'/../Database/Seeds' => base_path('database/seeds'),
         ], 'laravelsaseg');
 
-        $this->publishes([
-            __DIR__.'/../Database/Migrations/update_roles_table_add_deletable.php.stub' => $this->getMigrationFileName($filesystem),
-        ], 'migrations');
-
-        // //Publish migrations
-        // $this->publishes([
-        //     __DIR__.'/../Database/Migrations' => base_path('database/migrations'),
-        // ], 'laravelsaseg');
-
         //Publis Permission Key
         $this->publishes([
             __DIR__.'/../Providers/Publish' => base_path('app/Providers'),
         ], 'laravelsaseg');
+    }
+
+     /**
+     * Returns existing migration file if found, else uses the current timestamp.
+     *
+     * @param Filesystem $filesystem
+     * @return string
+     */
+    protected function getMigrationFileName(Filesystem $filesystem): string
+    {
+        $timestamp = date('Y_m_d_His');
+
+        return Collection::make($this->app->databasePath().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR)
+            ->flatMap(function ($path) use ($filesystem) {
+                return $filesystem->glob($path.'*_update_roles_table_add_deletable.php');
+            })->push($this->app->databasePath()."/migrations/{$timestamp}_update_roles_table_add_deletable.php")
+            ->first();
     }
 }

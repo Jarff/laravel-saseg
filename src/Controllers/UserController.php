@@ -139,12 +139,18 @@ class UserController extends Controller
         if($request->avatar){
             //Eliminamos todos los media asociados
             $image_name = explode('/', $request->avatar);
-            if(end($image_name) !== $user->getFirstMedia('users')->file_name){
-                //Reemplazamos la imagen
-                $user->clearMediaCollection('users');
+            if($user->getFirstMedia('users')){
+                if(end($image_name) !== $user->getFirstMedia('users')->file_name){
+                    //Reemplazamos la imagen
+                    $user->clearMediaCollection('users');
+                    $user->addMedia($request->avatar)
+                    ->preservingOriginal()
+                    ->toMediaCollection('users');
+                }
+            }else{
                 $user->addMedia($request->avatar)
-                ->preservingOriginal()
-                ->toMediaCollection('users');
+                    ->preservingOriginal()
+                    ->toMediaCollection('users');
             }
         }
         return redirect()->route('panel.admins.edit', ['id' => $id])->with('success', 'Información actualizada');

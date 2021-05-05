@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Rodsaseg\LaravelSaseg\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;

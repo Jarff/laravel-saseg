@@ -22,34 +22,6 @@
 		<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 			<!-- Nav items -->
 			<ul class="navbar-nav">
-				@can(PermissionKey::Apartado['permissions']['menu']['name'])
-					<li class="nav-item">
-						<a class="nav-link {{ (request()->is('admin/apartados*')) ? 'active' : '' }}" href="{{ route('panel.apartados.index') }}">
-							<i class="ni ni-single-copy-04 text-default"></i>
-							<span class="nav-link-text">Apartados</span>
-						</a>
-					</li>
-				@endcan
-				<li class="nav-item">
-					<a class="nav-link {{ (request()->is('admin/events/cursos*')) ? 'active' : '' }}" href="{{ route('panel.events.index', ['type' => 'cursos']) }}">
-						<i class="ni ni-book-bookmark text-default"></i>
-						<span class="nav-link-text">Cursos</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link {{ (request()->is('admin/events/campamentos*')) ? 'active' : '' }}" href="{{ route('panel.events.index', ['type' => 'campamentos']) }}">
-						<i class="ni ni-bus-front-12 text-default"></i>
-						<span class="nav-link-text">Campamentos</span>
-					</a>
-				</li>
-				@can(PermissionKey::Gallery['permissions']['menu']['name'])
-					<li class="nav-item">
-						<a class="nav-link {{ (request()->is('admin/galeria*')) ? 'active' : '' }}" href="{{ route('panel.gallery.index') }}">
-							<i class="ni ni-album-2 text-default"></i>
-							<span class="nav-link-text">Galería</span>
-						</a>
-					</li>
-				@endcan
 				@can(PermissionKey::Admin['permissions']['show_sidebar']['name'])
 					<li class="nav-item">
 						<a class="nav-link {{ (request()->is('admin/cuentas*')) ? 'active' : '' }}" href="#navbar-cuentas" data-toggle="collapse" role="button" aria-expanded="{{ (request()->is('admin/cuentas*')) ? 'true' : 'false' }}" aria-controls="navbar-cuentas">
