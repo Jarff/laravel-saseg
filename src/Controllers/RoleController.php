@@ -71,15 +71,15 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //Sí ya existe un rol con ese nombre redireccionamos a la pantalla anterior
-        if(Role::where('name', $request->name)->where('guard_name', 'admin')->get()->count() > 0){
+        if(Role::where('name', $request->name)->where('guard_name', 'web')->get()->count() > 0){
             return redirect()->back()->withInput($request->input())->with('invalid', 'Un rol con ese nombre ya existe');
         }
-        $role = Role::create(['name' => $request->name, 'guard_name' => 'admin']);
+        $role = Role::create(['name' => $request->name, 'guard_name' => 'web']);
         if((isset($request->permission)) && (count($request->permission) > 0)){
             foreach ($request->permission as $key => $perm) {
                 //Sí el permiso no existe se crea
-                if(Permission::where('name', $key)->where('guard_name', 'admin')->get()->count() == 0){
-                    $permission = Permission::create(['name' => $key, 'guard_name' => 'admin']);
+                if(Permission::where('name', $key)->where('guard_name', 'web')->get()->count() == 0){
+                    $permission = Permission::create(['name' => $key, 'guard_name' => 'web']);
                     $permission->assignRole($role);
                 }
             }
