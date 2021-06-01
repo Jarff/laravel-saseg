@@ -1,6 +1,7 @@
 <?php
 
 Route::post('/store/image', 'Rodsaseg\LaravelSaseg\Controllers\ImageController@store')->name('images.store');
+Route::post('/store/image/multiple', 'Rodsaseg\LaravelSaseg\Controllers\ImageController@storeMultiple')->name('images.store.multiple');
 Route::get('/storage/list', 'Rodsaseg\LaravelSaseg\Controllers\ImageController@show')->name('images.show');
 
 Route::prefix('admin')->group(function(){

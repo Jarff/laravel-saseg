@@ -23,7 +23,7 @@
             </div>
             
             <div class="modal-footer">
-                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                <button type="button" class="d-none btn btn-primary media-save-changes">Guardar cambios</button>
                 <button type="button" class="btn btn-default  ml-auto" data-dismiss="modal">Cerrar</button>
             </div>
             
