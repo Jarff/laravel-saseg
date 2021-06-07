@@ -86,6 +86,10 @@ class PermissionKey extends ServiceProvider
     const Image = [
         'name' => 'Módulo Material Subido',
         'permissions' => [
+            'show_sidebar' => [
+                'display_name' => 'Ver en menú',
+                'name' => 'images.menu'
+            ],
             'index' => [
                 'display_name' => 'Ver todos',
                 'name' => 'images.index'
@@ -93,6 +97,36 @@ class PermissionKey extends ServiceProvider
             'destroy' => [
                 'display_name' => 'Eliminar',
                 'name' => 'images.destroy'
+            ],
+        ]
+    ];
+
+    const Setting = [
+        'name' => 'Configuración',
+        'permissions' => [
+            'show_sidebar' => [
+                'display_name' => 'Ver en menú',
+                'name' => 'settings.index'
+            ],
+            'index' => [
+                'display_name' => 'Ver todos',
+                'name' => 'settings.index'
+            ],
+            'create' => [
+                'display_name' => 'Crear',
+                'name' => 'settings.create'
+            ],
+            'edit' => [
+                'display_name' => 'Ver detalle',
+                'name' => 'settings.edit'
+            ],
+            'update' => [
+                'display_name' => 'Modificar',
+                'name' => 'settings.update'
+            ],
+            'destroy' => [
+                'display_name' => 'Eliminar',
+                'name' => 'settings.destroy'
             ],
         ]
     ];

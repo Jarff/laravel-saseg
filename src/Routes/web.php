@@ -36,5 +36,9 @@ Route::prefix('admin')->group(function(){
                 Route::delete('/destroy/{id}', 'Rodsaseg\LaravelSaseg\Controllers\RoleController@destroy')->name('panel.roles.destroy');
             });
         });
+        Route::get('/medias', 'Rodsaseg\LaravelSaseg\Controllers\ImageController@index')->name('panel.medias.index');
+        Route::prefix('/configuracion')->group(function(){
+           //Route::get('/'.) 
+        });
     });
 });

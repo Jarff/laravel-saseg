@@ -10,16 +10,16 @@ class ImageController extends Controller
 {
     public function index(){
         $info = [
-            'title' => 'Categorías',
+            'title' => 'Biblioteca Multimedia',
             'breadcrumb' => [
                 [
                     'title' => 'Todos',
-                    'route' => 'panel.categories.index',
+                    'route' => 'panel.medias.index',
                 ]
             ]
         ];
         $info['data'] = $this->formatFiles(Storage::files('public/media'));
-        return view('panel.images.index', $info);
+        return view('vendor.panel.images.index', $info);
     }
 
     public function store(Request $request){

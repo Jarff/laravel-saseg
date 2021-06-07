@@ -21,6 +21,14 @@
 		<!-- Collapse -->
 		<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 			<!-- Nav items -->
+			@can(PermissionKey::Image['permissions']['show_sidebar']['name'])
+				<li class="nav-item">
+					<a class="nav-link {{ (request()->is('admin/medias')) ? 'active' : '' }}" href="{{ route('panel.medias.index') }}">
+						<i class="ni ni-album-2 text-default"></i>
+						<span class="nav-link-text">Biblioteca multimedia</span>
+					</a>
+				</li>
+			@endcan
 			<ul class="navbar-nav">
 				@can(PermissionKey::Admin['permissions']['show_sidebar']['name'])
 					<li class="nav-item">
@@ -48,6 +56,14 @@
 						</div>
 					</li>
 				@endcan
+				{{-- @can(PermissionKey::Setting['permissions']['show_sidebar']['name'])
+					<li class="nav-item">
+						<a class="nav-link {{ (request()->is('admin/medias')) ? 'active' : '' }}" href="{{ route('panel.medias.index') }}">
+							<i class="ni ni-album-2 text-default"></i>
+							<span class="nav-link-text">Biblioteca multimedia</span>
+						</a>
+					</li>
+				@endcan --}}
 			</ul>
 		</div>
 	</div>

@@ -142,6 +142,33 @@ add this line to your `webpack.mix.js`:
 	mix.js('resources/js/vendor/panel/scripts/index.js', 'public/panel/assets/js/main.js');
 ```
 
+```bash
+	php artisan vendor:publish --tag=fm-config
+```
+
+
+```bash
+	php artisan vendor:publish --tag=fm-assets --force
+```
+
+Update `leftPath` and `rightPath` from your `config/file-manager.php`
+
+```bash
+    /**
+     * Default path for left manager
+     *
+     * null - root directory
+     */
+    'leftPath' => 'media',
+
+    /**
+     * Default path for right manager
+     *
+     * null - root directory
+     */
+    'rightPath' => 'media',
+```
+
 ## Middleware
 
 Update the redirect function inside Middleware/Authenticate.php with:

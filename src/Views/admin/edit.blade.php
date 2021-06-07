@@ -34,7 +34,7 @@
                                         <div class="form-group">
                                             <label for="dropzone-avatar" class="form-control-label">Avatar</label>
                                             <input class="form-control unfocus" type="text" name="avatar" id="avatar" value="{{ (old('avatar')) ? old('avatar') : $admin->getFirstMediaUrl('users') }}" data-asset="{{ asset('') }}" required>
-                                            <a href="#modal-media" data-dropzone="image" data-toggle="modal" data-target="#modal-media" class="btn btn-default float-right mt-1">Escoger del multimedia</a>
+                                            <a href="#modal-media" data-dropzone="image" data-reference="dropzone-avatar" data-toggle="modal" data-target="#modal-media" class="btn btn-default float-right mt-1">Escoger del multimedia</a>
                                             <div id="dropzone-avatar" data-route="{{ route('images.store') }}" data-target="#avatar" class="dropzone" style="border:0px">
                                                 <div class="dz-default dz-message">Seleccionar archivo</div>
                                             </div>
