@@ -9,16 +9,8 @@
                 </button>
             </div>
             
-            <div class="modal-body">
+            <div class="modal-body" style="overflow-y: scroll;max-height: 600px;">
                 <div class="row modal-media">
-                    {{-- <div class="col-sm-3">
-                        <div class="card clickble">
-                            <img class="card-img" src="https://multi-restaurants.smartersvision.com/public/storage/app/public/193/conversions/1-thumb.jpg" data-name="1.png" data-type="image/png" data-size="88236" data-uuid="0d9d8b93-a100-44d8-b30e-c7790f3e0c6b" alt="Card image">
-                            <div class="card-footer">
-                                <small>1 (86.2 KB)</small><br> <small class="text-muted">2020-04-23 20:30:38</small>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
             

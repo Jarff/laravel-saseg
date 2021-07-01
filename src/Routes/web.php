@@ -37,8 +37,8 @@ Route::prefix('admin')->group(function(){
             });
         });
         Route::get('/medias', 'Rodsaseg\LaravelSaseg\Controllers\ImageController@index')->name('panel.medias.index');
-        Route::prefix('/configuracion')->group(function(){
+/*         Route::prefix('/configuracion')->group(function(){
            //Route::get('/'.) 
-        });
+        }); */
     });
 });
