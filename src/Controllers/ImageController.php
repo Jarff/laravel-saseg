@@ -19,7 +19,7 @@ class ImageController extends Controller
             ]
         ];
         $info['data'] = $this->formatFiles(Storage::files('public/media'));
-        return view('vendor.panel.images.index', $info);
+        return view('vendor.panel.medias.index', $info);
     }
 
     public function store(Request $request){
