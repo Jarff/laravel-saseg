@@ -20,40 +20,68 @@
 	<div class="navbar-inner">
 		<!-- Collapse -->
 		<div class="collapse navbar-collapse" id="sidenav-collapse-main">
-			<!-- Nav items -->
-			@can(PermissionKey::Image['permissions']['show_sidebar']['name'])
+			<!-- Administrador de archivos -->
+			<h6 class="navbar-heading p-0 text-muted">
+				<span class="docs-normal">Administrador de archivos</span>
+			</h6>
+			<hr class="my-2">
+			<ul class="navbar-nav mb-5">
+				@can(PermissionKey::Image['permissions']['show_sidebar']['name'])
+					<li class="nav-item">
+						<a class="nav-link {{ (request()->is('admin/medias')) ? 'active' : '' }}" href="{{ route('panel.medias.index') }}">
+							<i class="ni ni-archive-2 text-default"></i>
+							<span class="nav-link-text">Biblioteca multimedia</span>
+						</a>
+					</li>
+				@endcan
+			</ul>
+
+			<!-- Website -->
+			<h6 class="navbar-heading p-0 text-muted">
+				<span class="docs-normal">Website</span>
+			</h6>
+			<hr class="my-2">
+			<ul class="navbar-nav mb-5">
 				<li class="nav-item">
-					<a class="nav-link {{ (request()->is('admin/medias')) ? 'active' : '' }}" href="{{ route('panel.medias.index') }}">
-						<i class="ni ni-album-2 text-default"></i>
-						<span class="nav-link-text">Biblioteca multimedia</span>
+					<a class="nav-link {{ (request()->is('admin/noticias*')) ? 'active' : '' }}" href="{{ route('panel.noticias.index') }}">
+						<i class="ni ni-books text-default"></i>
+						<span class="nav-link-text">Noticias</span>
 					</a>
 				</li>
-			@endcan
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<i class="ni ni-books text-default"></i>
+						<span class="nav-link-text">Example link 2</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<i class="ni ni-box-2 text-default"></i>
+						<span class="nav-link-text">Example link 3</span>
+					</a>
+				</li>
+			</ul>
+
+			<!-- Panel -->
+			<h6 class="navbar-heading p-0 text-muted">
+				<span class="docs-normal">Administración</span>
+			</h6>
+			<hr class="my-2">
 			<ul class="navbar-nav">
-				@can(PermissionKey::Admin['permissions']['show_sidebar']['name'])
+				@can(PermissionKey::Admin['permissions']['index']['name'])
 					<li class="nav-item">
-						<a class="nav-link {{ (request()->is('admin/cuentas*')) ? 'active' : '' }}" href="#navbar-cuentas" data-toggle="collapse" role="button" aria-expanded="{{ (request()->is('admin/cuentas*')) ? 'true' : 'false' }}" aria-controls="navbar-cuentas">
+						<a class="nav-link {{ (request()->is('admin/cuentas/usuarios*')) ? 'active' : '' }}" href="{{ route('panel.admins.index') }}">
 							<i class="ni ni-single-02 text-default"></i>
-							<span class="nav-link-text">Administración</span>
+							<span class="nav-link-text">Usuarios</span>
 						</a>
-						<div class="collapse {{ (request()->is('admin/cuentas*')) ? 'show' : '' }}" id="navbar-cuentas">
-							<ul class="nav nav-sm flex-column">
-								@can(PermissionKey::Admin['permissions']['index']['name'])
-									<li class="nav-item">
-										<a class="nav-link {{ (request()->is('admin/cuentas/usuarios*')) ? 'active' : '' }}" href="{{ route('panel.admins.index') }}">
-											<span class="nav-link-text">Usuarios</span>
-										</a>
-									</li>
-								@endcan
-								@can(PermissionKey::Role['permissions']['index']['name'])
-									<li class="nav-item">
-										<a class="nav-link {{ (request()->is('admin/cuentas/roles*')) ? 'active' : '' }}" href="{{ route('panel.roles.index') }}">
-											<span class="nav-link-text">Roles</span>
-										</a>
-									</li>
-								@endcan
-							</ul>
-						</div>
+					</li>
+					@endcan
+					@can(PermissionKey::Role['permissions']['index']['name'])
+					<li class="nav-item">
+						<a class="nav-link {{ (request()->is('admin/cuentas/roles*')) ? 'active' : '' }}" href="{{ route('panel.roles.index') }}">
+							<i class="ni ni-key-25 text-default"></i>
+							<span class="nav-link-text">Roles</span>
+						</a>
 					</li>
 				@endcan
 				{{-- @can(PermissionKey::Setting['permissions']['show_sidebar']['name'])
