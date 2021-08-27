@@ -43,12 +43,6 @@
 			<hr class="my-2">
 			<ul class="navbar-nav mb-5">
 				<li class="nav-item">
-					<a class="nav-link {{ (request()->is('admin/noticias*')) ? 'active' : '' }}" href="{{ route('panel.noticias.index') }}">
-						<i class="ni ni-books text-default"></i>
-						<span class="nav-link-text">Noticias</span>
-					</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link" href="#">
 						<i class="ni ni-books text-default"></i>
 						<span class="nav-link-text">Example link 2</span>
